@@ -8,6 +8,22 @@
 #if os(iOS)
 import UIKit
 
+
+/** Describes the user interaction events that are triggered as the user taps the background */
+public enum PanModalBackgroundInteraction: Equatable {
+
+    /** Taps dismiss the modal immediately */
+    case dismiss
+
+    /** Touches are forwarded to the lower window (In most cases it would be the application main window that will handle it */
+    case forward
+
+     /** Absorbs touches. The modal does nothing (Swallows the touch) */
+    case none
+
+}
+
+
 /**
  This is the configuration object for a view controller
  that will be presented using the PanModal transition.
@@ -139,8 +155,15 @@ public protocol PanModalPresentable: AnyObject {
      A flag to determine if dismissal should be initiated when tapping on the dimmed background view.
 
      Default value is true.
+     
+     Deprecated. Use `backgroundInteraction` instead.
      */
     var allowsTapToDismiss: Bool { get }
+    
+    /**
+     Default value is .dismiss
+     */
+    var backgroundInteraction: PanModalBackgroundInteraction { get }
 
     /**
      A flag to toggle user interactions on the container view.
