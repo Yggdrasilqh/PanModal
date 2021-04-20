@@ -366,6 +366,8 @@ private extension PanModalPresentationController {
             addRoundedCorners(to: presentedView)
         }
 
+        presentable.modifyPersentView(view: presentedView)
+        
         setNeedsLayoutUpdate()
         adjustPanContainerBackgroundColor()
     }

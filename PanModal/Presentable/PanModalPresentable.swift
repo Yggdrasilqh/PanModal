@@ -195,6 +195,8 @@ public protocol PanModalPresentable: AnyObject {
      Default value is true.
      */
     var showDragIndicator: Bool { get }
+    
+    func modifyPersentView(view: UIView)
 
     /**
      Asks the delegate if the pan modal should respond to the pan modal gesture recognizer.

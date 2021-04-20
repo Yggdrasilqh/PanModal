@@ -54,6 +54,12 @@ class UserGroupViewController: UITableViewController, PanModalPresentable {
 
         tableView.separatorStyle = .none
         tableView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1137254902, blue: 0.1294117647, alpha: 1)
+        tableView.layer.cornerRadius = 10
+        if #available(iOS 13.0, *) {
+            tableView.layer.cornerCurve = .continuous
+        } else {
+            // Fallback on earlier versions
+        }
         tableView.register(UserGroupMemberCell.self, forCellReuseIdentifier: "cell")
     }
 
@@ -88,6 +94,10 @@ class UserGroupViewController: UITableViewController, PanModalPresentable {
     }
 
     // MARK: - Pan Modal Presentable
+    
+    var panModalBackgroundColor: UIColor {
+        return .clear
+    }
 
     var panScrollable: UIScrollView? {
         return tableView
